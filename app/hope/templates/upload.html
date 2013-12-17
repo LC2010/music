@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>初见 - 图片分享</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />    
+    <meta name="keywords" content="初见，寻找一生至爱的人和事。"/>
+    <meta property="wb:webmaster" content="bfa312168408a5bc" />
+    <meta name="description" content="初见即是缘"/>
+    <link href="/images/hope/favicon.ico" type="image/x-icon" rel="shortcut icon"> 
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <link href="/css/hope/common.css" rel="stylesheet" media="screen">
+	<script type="text/javascript" src="/js/jquery.min.js"></script>     
+    <script type="text/javascript" src="/js/jquery.form.js"></script>   
+</head>    
+<body>
+{=include file="hope/menu.html"=} 
+<div class="wraper">
+    <div class="container">
+        <div class="left minheight">
+            <form method="post" id="upload_form" enctype="multipart/form-data" action="">
+                <div class="text-box" >
+                    <div class="text-theme" >上传妹子：</div>
+                    <div class="text-main" style="height:auto;">
+                        <span id="select_file" style="color:#ED6752;cursor:pointer;">选择文件</span>
+                        <input id="file_name" name="Filedata" class="file" type="file" >
+                        <img id="img" style="display:none;" width=300 src="">
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+            </form>
+            <form action="/?s=item&a=submit" name="form" method="post"> 
+                <div class="text-box">
+                    <div class="text-theme">添加描述：</div>
+                    <div class="text-main">
+                        <textarea name="desc" class="text-area"></textarea>&nbsp;<span class="text-tips">描述</span>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+                <input type="hidden" name="uid" value="{=$uid=}">
+                <input type="hidden" id="image_face" name="image_face" value="">
+                <input type="hidden" id="image_show" name="image_show" value="">
+                <div class="text-box margin"><input class="likeBtn bod" type="submit" value="提交表单"></div>
+            </form>
+        </div>
+        <div class="side"></div>
+        <div style="clear:both;"></div>
+    </div>
+</div>
+{=include file="hope/foot.html"=}
+</body>
+</html>
+<script type="text/javascript">
+      $(document).ready(function(){  
+          //给文件上传input框绑定change事件
+          $('#file_name').bind('change',function(){
+              var path = $(this).val();////获取文件域中待上传的文件的本地路径
+              var ext  = path.substring(path.lastIndexOf('.'));////获取图片的扩展名
+              if(ext.toLowerCase() !='.jpg' && ext.toLowerCase() != '.png'){
+                  alert('抱歉,系统上传头像仅支持jpg或png格式');
+                  return false;
+              }        
+              if(path) {
+                  var options = {
+                      url       : "/?s=item&a=doUpload&format=json",
+                      type      : 'POST',
+                      dataType  : 'json', 
+                      success   : function(data){
+                            var code = data.status.code;
+                            var msg  = data.status.msg;
+                            if(code==0){
+                                  var url_face = data.data.img_face;  
+                                  var url_show = data.data.img_show;
+                                  $("#select_file").hide();
+                                  $("#img").attr("src", url_face);  
+                                  $("#img").show(); 
+                                  $("#image_face").attr("value", url_face);
+                                  $("#image_show").attr("value", url_show);
+                            }else{
+                                  alert(msg);
+                            }            
+                      }
+                  };
+                  $('#upload_form').ajaxSubmit(options);
+              }
+          });           
+      });
+</script>

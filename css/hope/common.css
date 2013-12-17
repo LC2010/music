@@ -1,0 +1,531 @@
+*{padding:0;margin:0;}
+a{text-decoration:none;}
+img{border:none;}
+body{
+    font-size:100%;
+}
+.nav{
+    width:100%;
+    height:70px;
+    border-bottom:1px solid #EEE;
+    margin-bottom:20px;
+}
+.container{
+    max-width:950px;
+    min-height:70px;
+    margin:0 auto;
+    line-height:70px;
+    padding:0 2px;
+    height:auto;
+    clear:both;
+}
+.container .brand{
+    width:50%;
+    height:70px;
+    line-height:70px;
+    float:left; 
+}
+.brand .brand-zh{
+    width:100%;
+    height:50px;
+    line-height:60px;
+}
+.brand-zh a{
+    font-size:22px;
+    color:#ED6752;
+    font-family: "Microsoft YaHei";
+    font-weight:bold;
+}
+.brand .brand-en{
+    width:100%;
+    height:20px;
+    line-height:9px;
+    
+}
+.brand-en a{
+    color:#666;
+    font-family: Candara;
+    font-size:13px;
+}
+.container .dropdown{
+    width:50%;
+    height:70px;
+    line-height:110px;
+    float:left;
+    text-align:right;
+    
+}
+.dropdown a{
+    font-size:13px;
+    color: #ED6752;
+    font-family: Microsoft YaHei;
+    font-weight:700;
+}
+.wraper{
+    width:100%;
+    height:auto;
+    border-bottom:1px solid #EEE;
+}
+@media (min-width: 768px){
+    .item{
+        width:25%;
+        margin-left:0px;
+        margin-bottom:3px;
+        float:left;
+        position:relative;
+    }
+    .left.minheight{
+        min-height:450px;
+    }
+
+}
+@media (max-width: 768px){
+    .item{
+        width:50%;
+        margin-top:2px;
+        margin-left:0px;
+        float:left;
+        position:relative;
+    }
+    .left.minheight{
+        min-height:50px;
+    }
+}
+.item img{
+    width:99%;    
+    display:block;
+    vertical-align:middle;
+}
+
+.item .mask{ 
+    overflow:hidden;background-image: url("/images/hope/mask.png"); 
+    width:99%;
+    height: 40px;
+    position:absolute;
+    left: 0;top: 0;
+    color:#999;
+    font-size:13px;
+    display:none;
+}
+.mask .avatar{
+    width:20%;
+    height:40px;
+    line-height:40px;
+    float:left;
+}
+.mask .avatar img{
+    margin:3px 3px;
+}
+.mask .desc{
+    float:left;
+    width:40%;
+    height:40px;
+}
+.desc .detail{
+    text-align:left;
+    height: 20px;
+    line-height:20px;
+    overflow: hidden;
+    width: 100%;
+    margin-left:10px;
+}
+.detail a{
+    color:#999;
+}
+.mask .hearts{ 
+    float: right;
+    height: 40px;
+    width: 20%;
+}
+.hearts a{
+    background: url("/images/hope/icon_heart.png") no-repeat scroll 6px 4px transparent;
+    display: block;
+    height: 35px;
+    width: 100%;
+}
+.hearts a.collect{
+    background-position:6px -31px;
+}
+
+.item .entry_tabs {
+    background: url("/images/hope/hover_background.png") repeat scroll 0 0 transparent;
+    bottom: 0px;
+    height: 35px;
+    left: 0;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    width: 99%;
+    transition: bottom 300ms ease 0s; 
+    overflow:hidden;
+    display:none;
+}
+.item .entry_tabs a {
+    -moz-box-sizing: border-box;
+    box-shadow: 1px 0 0 rgba(255, 255, 255, 0.15) inset, -1px 0 0 #000000 inset, 0 2px 0 rgba(255, 255, 255, 0.15), 0 1px 0 #000000;
+    color: #CCCCCC;
+    display: block;
+    float: left;
+    height: 35px ! important;
+    line-height: 17px;
+    padding: 10px 0 0;
+    text-align: center; 
+    width: 33.33333%;
+    text-decoration:none;
+}
+.item .entry_tabs .view-hearts i {
+    background: url("/images/hope/entry-icons.png") no-repeat scroll left top transparent;
+    display: inline-block;
+    height: 16px;
+    margin: 0 0 -2px 4px;
+    overflow: hidden;
+    text-indent: 110%;
+    white-space: nowrap;
+    width: 16px;
+    background-position: -8px -6px;
+    width: 33%;
+}
+.item .entry_tabs .view-tags i {
+    background: url("/images/hope/entry-icons.png") no-repeat scroll left top transparent;
+    display: inline-block;
+    height: 16px;
+    margin: 0 0 -2px 4px;
+    overflow: hidden;
+    text-indent: 110%;
+    white-space: nowrap;
+    width: 33%;
+    background-position: -40px -6px;
+}
+.item .entry_tabs .view-share i {
+    background: url("/images/hope/entry-icons.png") no-repeat scroll left top transparent;
+    display: inline-block;
+    height: 16px;
+    margin: 0 0 -2px 4px;
+    overflow: hidden;
+    text-indent: 110%;
+    white-space: nowrap;
+    width: 16px;
+    background-position: -94px -6px;
+    width: 33%;
+}
+
+
+.center{
+    text-align:center;
+}
+.foot{
+    width:100%;
+    height:70px;
+    line-height:70px;
+}
+.foot a{
+    color:#ED6752;
+    font-size:16px;
+}
+.left{
+    width:70%;
+    min-height:20px;
+    float:left;
+    text-align:left;
+}
+
+.side{
+    width:30%;
+    min-height:20px;
+    float:left;
+    text-align:left;
+    position: relative; 
+    position: relative; }
+.title .likeBtn , .side .likeBtn, .text-box .likeBtn{
+    width:45%;
+    height:35px;
+    line-height:35px;
+    text-align:center;
+    color:#FFF;
+    margin-bottom:10px;
+    background:#ED6752;
+    cursor:pointer;
+    font-size:15px;
+    font-family: Microsoft YaHei;
+    border-radius: 2px 2px 2px 2px;
+    float:left;
+}
+.likeBtn.liked{
+    background:#F4F4F4;
+    color:#666;
+}
+.like_list{width:230px;height:auto;margin-top:20px;}         
+.like_list img{
+    width:50px;height:50px;margin-top:5px;  
+    margin-right:5px;                          
+    float:left;                               
+} 
+.side #like{
+    position: absolute;
+    left: 0px;
+    text-align: left;
+    top: 0;
+    width: 50%;
+    height: 35px; 
+    line-height:35px;
+    text-align:center;
+    color:#ED6752;
+    font-size:20px;
+}
+
+
+.comment{
+    width:70%;
+    min-height:50px;
+    height:auto;
+    margin:10px 0;
+} 
+.comment .head{
+    width:60px;
+    height:50px;
+    float:left;
+}
+.comment .text{
+    max-width:450px;
+    height:auto;
+    min-height:50px;
+    float:left; 
+    font-size:13px;
+}
+.comment .text .cmt-tit{
+    width:100%;
+    height:20px;
+    line-height:20px;
+}
+.cmt-tit a{
+   color:#ED6752; 
+}
+.cmt-tit a span{
+    color:#999;
+    font-size:12px;
+}
+.comment .text .cmt-content{
+    width:100%;
+    min-height:30px;
+    line-height:30px;
+    color:#666;
+}
+@media (max-width: 768px){
+    
+    .left{
+        width:100%;
+    }
+    .side{
+        width:100%;
+        position: relative; 
+    }
+    .left img{
+        width:100%;
+    }
+    /*.comment .head{
+        width:20%;
+        height:50px;
+        float:left;
+    }
+    .comment .text{
+        width:80%;
+        height:auto;
+        min-height:50px;
+        float:left;
+        
+        font-size:13px;
+    }*/
+}
+
+
+.title .likeBtn , .side .likeBtn, .text-box .likeBtn{
+    width:45%;
+    height:35px;
+    line-height:35px;
+    text-align:center;
+    color:#FFF;
+    margin-bottom:10px;
+    background:#ED6752;
+    cursor:pointer;
+    font-size:15px;
+    font-family: Microsoft YaHei;
+    border-radius: 2px 2px 2px 2px;
+    float:left;
+}
+.likeBtn.liked{
+    background:#F4F4F4;
+    color:#666;
+}
+.left .text-box{
+    clear:both;
+    width:100%;
+    height:auto;
+    margin-top:5px;
+    font-size:13px;
+    color:#666;
+}
+
+.title .likeBtn , .side .likeBtn, .text-box .likeBtn{
+    width:45%;
+    height:35px;
+    line-height:35px;
+    text-align:center;
+    color:#FFF;
+    margin-bottom:10px;
+    background:#ED6752;
+    cursor:pointer;
+    font-size:15px;
+    font-family: Microsoft YaHei;
+    border-radius: 2px 2px 2px 2px;
+    float:left;
+}
+.likeBtn.liked{
+    background:#F4F4F4;
+    color:#666;
+}
+.text-theme{width:30%;height:60px;font-size:13px;line-height:60px;text-align:left;float:left}
+.text-main{position:relative;width:60%;height:60px;font-size:13px;line-height:60px;text-align:left;float:left;}
+.file{position:absolute;top:20px;left:0px;cursor:pointer;border:none;background:0;opacity:0;}
+.text-tips{font-size:11px;height:60px;display:none;line-height:60px;text-align:left;}
+.ui-text{width:50px;height:30px; border: 1px solid #C9C9C9;margin-top:14px;border-radius:3px;font-size: 14px;padding: 5px;}
+.text-area{width:95%;padding:5px;border-radius:2px;height:60px;border:1px solid #DDD;}
+.likeBtn.bod{width:150px;border:1px solid #ED6752;}
+.text-box.margin{margin-top:30px;}
+
+.back{
+    max-width:950px;
+    background:#F3F3F3;
+    text-align:center;
+    height:44px;
+    margin:10px auto;
+    line-height:44px;
+    font-family: "Microsoft YaHei";
+    font-size:18px;
+    color:#ED6752;
+    font-weight:700;
+    cursor:pointer;
+}
+.dropdown span{
+    font-size:13px;
+    color:#666;
+}
+/**
+ * 动态
+ *
+ */ 
+.feeds{
+        
+}
+.feeds_head{
+    width:80px;
+    float:left;
+    padding-top:3px;
+}
+.feeds_head img{
+    width:60px;
+}
+.feeds_con{
+    width:70%;
+    float:left
+}
+.feeds_con img{
+    max-width:228px;
+}
+.feeds_tit{
+     font-size: 13px;
+    line-height: 1.45;
+    color:#555;
+    margin-bottom:20px;
+}
+.feeds_con a{
+    color:#3377AA;
+}
+.feeds_desc{
+    margin-left:20px;
+    /*max-height:158px;
+    */overflow:hidden;
+    color:#999999;
+     font-size: 13px;
+}
+/**
+ *
+ * 评论
+ *
+ */
+.comment-form{
+    border:1px solid #CCC;
+    max-width:500px;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+.commentsHolder {
+    padding: 18px 22px 10px;
+}
+.commentBodyField {
+    -moz-box-sizing: border-box;
+    background-color: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    color: #222222;
+    display: inline-block;
+    font-family: arial;
+    font-size: 13px;
+    padding: 5px 2px 2px 5px;
+    vertical-align: top;
+    width: 100%;
+}
+.identityControlsHolder {
+    padding-top: 8px;
+}
+.postCommentButtonHolder {
+     background-color: #F5F5F5;
+     padding: 2px 5px 8px 2px;
+     height:26px;
+     line-height:26px;
+}
+#updateBtn {
+    background-color: #4D90F0;
+    border: 1px solid #3079ED;
+    color: #FFFFFF;
+    font-weight: bold;
+    margin: 8px 0 0 18px;
+    border-radius: 2px 2px 2px 2px;
+    font: bold 11px arial;
+    height: 27px;
+    margin: 1px 0 0 15px;
+    padding-bottom: 0;
+    text-align: center;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+    vertical-align: top;
+    width: 75px;
+    cursor:pointer;
+}
+.comment{
+    max-width:500px;
+    margin-bottom:20px;
+    height:auto;
+}
+.comment-image{
+    float:left;    
+    width:50px;
+    padding-top:10px;
+}
+.comment-block{
+    margin-left:10px;
+    float:left;
+    padding:5px;
+    width:400px;
+}
+.comment-content{
+    text-align:justify;
+    line-height: 20px;
+    margin-top: 5px;
+}
+.comment-header a{
+    color:#EA5546;
+}
+.social-links {
+    padding: 5px 10px;
+    background:#FFF;
+    z-index:100;
+}

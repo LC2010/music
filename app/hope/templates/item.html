@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />		    
+    <meta name="keywords" content="初见 妹纸 美女 校花"/>
+    <meta property="wb:webmaster" content="bfa312168408a5bc" />    
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta name="description" content="鼓励妹纸上传自己的青春靓照，欢迎男同学大胆赞美欣赏的她，与微博打通，可以交友并互粉哦"/>
+    <link href="/images/hope/favicon.ico" type="image/x-icon" rel="shortcut icon">     
+    <link rel="stylesheet" type="text/css" href="/css/hope/common.css"/>
+    <title>{=$data.userinfo.screen_name=}贴了一张妹纸 - 初见</title>	    
+	<script type="text/javascript" src="/js/jquery.min.js"></script>     
+    <script type="text/javascript" src="/js/jquery.form.js"></script>
+</head>
+<body>
+{=include file="hope/menu.html"=}
+<div class="wraper">
+    <div class="container" id="container">
+        <div class="left">
+            <img src="{=$data.image=}" id="swap">
+        </div>
+        <div class="side">
+            <div class="social-links">
+                <a href="/" target="_blank">
+                    <img width="32" height="32" src="/images/home/rss.png">
+                </a>            
+                <a href="http://github.com/mayhope" target="_blank">
+                    <img width="32" height="32" src="/images/home/github.png">
+                </a>
+                <a href="http://www.douban.com/people/mayhope" target="_blank">
+                    <img width="32" height="32" src="/images/home/douban.png">
+                </a>
+                <a href="http://weibo.com/3020750081" target="_blank">
+                    <img width="32" height="32" src="/images/home/weibo.png">
+                </a>          
+            </div>
+            <div style="margin-right:28px;" class="likeBtn  {=if $is_good=}liked{=/if=}" id="good">
+                喜欢 x <span id="count">{=$good.count=}</span>
+            </div>
+            <div id="like" style="display: none; top: 0px;">+1</div>
+            <div class="likeBtn" onclick="share()">推荐</div>
+            <div class="like_list" id="like_list">
+                {=foreach from=$good.list item=item=}
+                <a target="_blank" href="http://weibo.com/u/{=$item.uid=}">
+                    <img id="uid-{=$item.uid=}" src="{=$item.profile_image_url=}">
+                </a>
+                {=/foreach=}
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+    <div class="container">
+        <div class="comment">
+            <div class="head">
+                <a href="http://weibo.com/u/{=$data.userinfo.uid=}" target="_blank">
+                    <img width=50 src="{=$data.userinfo.profile_image_url=}">
+                </a>    
+            </div>
+            <div class="text">
+                <div class="cmt-tit">
+                    <a href="http://weibo.com/u/{=$data.userinfo.uid=}" target="_blank">{=$data.userinfo.screen_name=}</a>
+                </div>
+                <div class="cmt-content">贴了一张新妹子</div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        {=foreach from=$comment item=item=}
+        <div class="comment">
+            <div class="head">
+                <a href="http://weibo.com/u/{=$item.userinfo.uid=}" target="_blank">
+                    <img width=50 src="{=$item.userinfo.profile_image_url=}">
+                </a>    
+            </div>
+            <div class="text">
+                <div class="cmt-tit">
+                    <a href="http://weibo.com/u/{=$item.userinfo.uid=}" target="_blank">{=$item.userinfo.screen_name=}&nbsp;&nbsp;<span>{=$item.create_time=}</span></a> 
+                </div>
+                <div class="cmt-content">{=$item.comment=}</div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+
+        {=/foreach=}
+        <div class="comment-form">
+            <form  action="/?s=comment&a=submit&format=json" autocomplete="off" method="post" id="updateForm">
+                <div class="commentsHolder">
+                    <textarea class="commentBodyField" cols="50" rows="4" name="comment"></textarea><br>
+                    <input type="hidden" name="art_id" value="{=$data.id=}">
+                    <input type="hidden" name="to_uid" value="{=$data.uid=}">
+                    <input type="hidden" name="pid" value="0">
+                </div>
+                <div class="postCommentButtonHolder">                                                                               
+                    <input type="submit" value="Publish" id="updateBtn">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+ {=include file="hope/foot.html"=}
+</body>
+</html>
+<script type="text/javascript">
+    var is_good = '{=$is_good=}';    
+    $('#good').click(function(){
+        var uid = '{=$uid=}';
+        if(is_good=='1'){
+            $('#like').html('-1');
+            $('#good').removeClass('liked');    
+            var count = parseInt($('#count').html())-1;
+            $('#count').html(count);
+        }else{
+            $('#good').addClass('liked');
+            $('#like').html('+1');             
+            var count = parseInt($('#count').html())+1;
+            $('#count').html(count);
+        }
+        $('#like').animate({opacity: "show", top: "-55"}, "fast"); 
+        setTimeout(function(){
+            $('#like').animate({opacity: "hide", top: "0"}, "fast");
+        },800);
+        if(uid=='0'){
+            alert('请先登录');
+        }else{
+            if(is_good=='1'){
+                $.ajax({
+                    type:'post',
+                    url:'/?s=item&a=cancel&format=json',
+                    data:{uid:'{=$uid=}', id:'{=$data.id=}'},
+                    success:function(obj){
+                        var id = '#uid-'+uid;
+                        $(id).remove();
+                    }    
+                });  
+                is_good =0;        
+            }else{
+                $.ajax({
+                    type:'post',
+                    url:'/?s=item&a=good&format=json',
+                    data:{uid:'{=$uid=}', id:'{=$data.id=}'},
+                    success:function(obj){
+                        var html = '<a target="_blank" href="http://weibo.com/u/'+obj.data.uid + '"><img id="uid-' + 
+                        obj.data.uid+'" src="'+obj.data.profile_image_url+'"></a>';
+                        $('#like_list').prepend(html);  
+                    }    
+                });
+                is_good = 1;
+            }
+        }       
+    });
+    function share(){   
+          var source  = encodeURIComponent(location.href);//urlEncode，防止丢掉&后面的参数.        
+          var picture = '{=$data.image=}'; 
+          var screen_name = '{=$data.userinfo.screen_name=}';
+          window.open("http://service.weibo.com/share/share.php?url=" + source + "&appkey=1028039693&title=我分享了@" + 
+            screen_name+" 的一张图片&pic="+picture+"&ralateUid=3020750081", "_blank", "width=615,height=505,resizable=no");
+    }   
+    var id =  '{=$data.id=}';
+    $("#swap").click(function(){
+        $.ajax({
+            type:'post',
+            url:'/?s=item&a=next&format=json',
+            data:{id:id},
+            success:function(data){
+                window.location.href='http://mayhope.com/item/'+data.data.id+'.html';
+            }
+        });        
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var options = {
+            url       : "/?s=comment&a=submit&format=json",
+            type      : 'POST',
+            dataType  : 'json', 
+            success   : function(data){
+                alert(data.status.msg);
+            } 
+        };
+        $("#updateForm").ajaxForm(options);      
+});
+</script>

@@ -1,0 +1,66 @@
+{=extends file='layout.html'=}
+{=block name=main=}
+
+<!-- separator start-->
+<div id="separator" class="ui-separator separator-left" data-options-toggle=".contetnt-left" data-options-extend = ".content-right">
+</div>
+<!-- separator end-->
+<!-- content start-->
+<div class="cms-main">
+    <!-- menubar start-->
+    <div class="man-nav">
+        <div class="ui-menubar clearfix">
+            <ul class="ui-menu-list">
+                <li class="ui-menu-item ui-menu-current opt" data-opt_type="search" data-opt_id="searchContainer" 
+                data-opt_url="/">文章</li>
+            </ul>
+            <div class="ui-menu-state">
+                <a href="/">后台首页</a>/<span class="menu-state-current">文章</span>
+            </div>
+        </div>
+    </div>
+    <!--menubar end-->
+    <div class="main-content">
+        <div class="content-search">
+            <fieldset class="ui-search">
+                <form id="search_form" name="search_form" method="get">
+                    <input type="hidden" name="s" value="article"/>
+                    <input type="hidden" name="a" value="view"/>
+                    <div class="ui-search-container">
+                        <select name="_search_field">
+                            <option value="id">ID</option>
+                            <option value="uid">用户</option>
+                            <option value="kind">分类</option>
+                        </select>&nbsp;&nbsp;
+                        <input hidefocus type="text" name="_search_keyword" value="" id="keyword" size="20" 
+                        class="ui-input-text">&nbsp;&nbsp;
+                        <input hidefocus type="button" class="ui-input-button opt" data-opt_type="search" 
+                        data-opt_id="searchContainer" data-opt_url="/" value="搜索">
+                    </div>
+                </form>
+            </fieldset>
+        </div>
+        <div id="searchContainer">
+            <form action="/?s=article&a=do_edit" name="from" method="POST">
+                <script type="text/plain" id="ueditor" name="content">{=$article.content nofilter=}</script>                 
+                <input type="hidden" name="id" value="{=$article.id=}"> 
+                <div><input type="submit" name="submit" value="提交"></div>
+            </form> 
+        </div>
+    </div>
+</div>
+<script>
+    window.UEDITOR_HOME_URL = "/js/ueditor/";
+</script>
+<script type="text/javascript" charset="utf-8" src="/js/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript">
+    var ue = UE.getEditor('ueditor', {
+        initialFrameWidth: 650,
+        initialFrameHeight: 120,
+        imagePath:"",
+        imageUrl:"/?s=report&a=upload"
+    });
+    
+</script>
+{=/block=}

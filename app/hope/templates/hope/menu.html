@@ -1,0 +1,21 @@
+<div class="nav">
+    <div class="container">
+        <div class="brand">
+            <div class="brand-zh"><a href="/">初见</a></div>
+            <div class="brand-en"><a href="/">First Crush</a></div>
+        </div>
+        <div class="dropdown">
+            {=if $uid=}
+                <a href="http://weibo.com/u/{=$uid=}"  target="_blank">
+                  <img width=30 title="{=$userinfo.screen_name=}" src="{=$userinfo.profile_image_url=}">
+                </a>
+                <a href="http://weibo.com/u/{=$userinfo.uid=}">{=$userinfo.screen_name=}</a> 
+                <a href="/item/upload">发图</a>
+            {=else=}
+            <a href="{=$code_url=}">使用微博登陆</a>
+            {=/if=}
+            <a href="/feed/">动态</a>
+        </div>
+    </div>
+</div>
+

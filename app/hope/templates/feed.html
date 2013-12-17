@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />		    
+    <meta name="keywords" content="初见 妹纸 美女 校花"/>
+    <meta property="wb:webmaster" content="bfa312168408a5bc" />    
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta name="description" content="鼓励妹纸上传自己的青春靓照，欢迎男同学大胆赞美欣赏的她，与微博打通，可以交友并互粉哦"/>
+    <link href="/images/hope/favicon.ico" type="image/x-icon" rel="shortcut icon">     
+    <link rel="stylesheet" type="text/css" href="/css/hope/common.css"/>
+    <title>初见  正在发生</title>	    
+	<script type="text/javascript" src="/js/jquery.min.js"></script>     
+</head>
+<body>
+{=include file="hope/menu.html"=}
+<div class="wraper">
+    <div class="container" id="container">
+        <div class="left" style="border-right:1px solid #EFE;">
+            {=foreach from=$list item=item=}
+            <div class="feeds">
+                <div class="feeds_head">
+                    <img src="{=$item.userinfo.profile_image_url=}">
+                </div>
+                <div class="feeds_con">
+                    <div class="feeds_tit"> {=$item.userinfo.screen_name=} 上传了1张照片到 <a href="">初见社区</a> </div>
+                    <div class="feeds_desc"><a href="http://mayhope.com/item/{=$item.id=}.html"><img src="{=$item.face=}"></a></div>
+                    <div class="feeds_desc"> 今天下午 <a href="">回应</a>   <a href="">删除</a> </div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>        
+            {=/foreach=}
+        </div>
+        <div class="side">
+
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+</div>
+ {=include file="hope/foot.html"=}
+</body>
+</html>
+<script type="text/javascript">
+    var is_good = '{=$is_good=}';    
+    $('#good').click(function(){
+        var uid = '{=$uid=}';
+        if(is_good=='1'){
+            $('#like').html('-1');
+            $('#good').removeClass('liked');    
+            var count = parseInt($('#count').html())-1;
+            $('#count').html(count);
+        }else{
+            $('#good').addClass('liked');
+            $('#like').html('+1');             
+            var count = parseInt($('#count').html())+1;
+            $('#count').html(count);
+        }
+        $('#like').animate({opacity: "show", top: "-55"}, "fast"); 
+        setTimeout(function(){
+            $('#like').animate({opacity: "hide", top: "0"}, "fast");
+        },800);
+        if(uid=='0'){
+            alert('请先登录');
+        }else{
+            if(is_good=='1'){
+                $.ajax({
+                    type:'post',
+                    url:'/?s=item&a=cancel&format=json',
+                    data:{uid:'{=$uid=}', id:'{=$data.id=}'},
+                    success:function(obj){
+                        var id = '#uid-'+uid;
+                        $(id).remove();
+                    }    
+                });  
+                is_good =0;        
+            }else{
+                $.ajax({
+                    type:'post',
+                    url:'/?s=item&a=good&format=json',
+                    data:{uid:'{=$uid=}', id:'{=$data.id=}'},
+                    success:function(obj){
+                        var html = '<a target="_blank" href="http://weibo.com/u/'+obj.data.uid + '"><img id="uid-' + 
+                        obj.data.uid+'" src="'+obj.data.profile_image_url+'"></a>';
+                        $('#like_list').prepend(html);  
+                    }    
+                });
+                is_good = 1;
+            }
+        }       
+    });
+    function share(){   
+          var source  = encodeURIComponent(location.href);//urlEncode，防止丢掉&后面的参数.        
+          var picture = '{=$data.image=}'; 
+          var screen_name = '{=$data.userinfo.screen_name=}';
+          window.open("http://service.weibo.com/share/share.php?url=" + source + "&appkey=1028039693&title=我分享了@" + 
+            screen_name+" 的一张图片&pic="+picture+"&ralateUid=3020750081", "_blank", "width=615,height=505,resizable=no");
+    }   
+    var id =  '{=$data.id=}';
+    $("#swap").click(function(){
+        $.ajax({
+            type:'post',
+            url:'/?s=item&a=next&format=json',
+            data:{id:id},
+            success:function(data){
+                window.location.href='http://mayhope.com/item/'+data.data.id+'.html';
+            }
+        });        
+    });
+</script>

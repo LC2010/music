@@ -1,0 +1,225 @@
+﻿*{margin:0;padding:0;outline:0;}
+ul li {list-style:none;}
+html {overflow-x:hidden}
+a {text-decoration:none;color:#999}
+a:hover {text-decoration:none;color:#20b6f1}
+h1,h2,h3,h4,h5,h6,strong {font-weight:800;font-size:100%}
+img,button {background:0;border:0}
+ol,ul,li {list-style:none}
+.color,.color:hover,.color a,.color a:hover {color:#20b6f1}
+.clearfix:after {content:"";display:block;visibility:hidden;height:0;clear:both}
+.clearfix {zoom:1}
+body {
+    background: none repeat scroll 0 0 #CED9D3;
+        color: #333333;
+            font-family: "Microsoft YaHei",simhei;
+                font-size: 12px;
+}
+.radio .playtime,.radio-btn a,.radio .channels-hd {
+	opacity:.7;
+	background-image:url(/images/hope/fm-icon.png);
+	background-repeat:no-repeat;
+	background-position:-999em -999em
+}
+
+.header{
+    width:100%;
+    position:fixed;
+    left:0;
+    top:0;
+    text-align:center;
+    background:#EEE;
+    opacity:0.75;
+}
+.container{
+    width:950px;
+    height:45px;
+    margin:0 auto;
+}
+.brand{
+    width:50%;
+    height:45px;
+    line-height:45px;
+    font-size:30px;
+    font-weight:700;
+    float:left;
+    text-align:left;
+}
+.login{
+    width:50%;
+    height:45px;
+    line-height:45px;
+    float:left;
+    text-align:right;
+}
+.wrap {
+	width:528px;
+	height:258px;
+	margin:0 auto;
+	position:absolute;
+	top:140px;
+	left:50%;
+	margin-left:-289px
+}
+#player {
+	height:0;
+	line-height:0
+}
+.radio-box-wrap {
+	float:left;
+}
+.radio-box {
+	width:528px;
+	height:258px;
+	overflow:hidden;
+	background:url(/images/hope/mp_bg.png) 0 0 no-repeat
+}
+.radio-box .album-cover {
+	float:left;
+	width:240px;
+	height:240px;
+	margin:9px 0 0 7px;
+	overflow:hidden;
+	background:url(/images/hope/loading.gif) center center no-repeat
+}
+.radio-box .album-cover:hover {
+	background:none;
+}
+.radio-box .album-cover a {
+	position:relative
+}
+.radio {
+	float:left;
+	width:250px;
+	overflow:hidden;
+	margin:10px 18px 0 8px;
+	text-align:left;
+	color:#666;
+}
+.radio #songname {
+	font-size:20px;
+	font-family:"Microsoft YaHei",simhei;
+	height:36px;
+	line-height:25px;
+	padding:20px 0 15px
+}
+.radio #songname a {
+	color:#999;
+}
+.radio #songname a:hover {
+	color:#20b6f1
+}
+.radio .artist,.radio .album {
+	height:18px;
+	line-height:18px;
+	width:100%;
+	padding-bottom:3px;
+	overflow:hidden
+}
+.radio .album a {
+	color:#999;
+	font-style:italic;
+}
+.radio .album a:hover {
+	color:#20b6f1
+}
+.radio .playtime {
+	margin-top:10px;
+	text-align:right;
+	color:#999
+}
+.radio .jp-progress {
+	overflow:hidden;
+	background:#dedede;
+	width:100%;
+	height:3px;
+	border-radius:5px;
+}
+.radio .jp-seek-bar {
+	background:#ced9d3;
+	width:0;
+	height:100%;
+	cursor:pointer;
+	border-radius:5px;
+}
+.radio .jp-play-bar {
+	background:#91BDB4;
+	width:0;
+	height:100%;
+	border-radius:5px;
+}
+.radio-btn {
+	width:100%;
+	text-align:right;
+	margin-top:24px
+}
+.radio-btn a,.radio-btn a:hover {
+	display:block;
+	overflow:hidden;
+	width:57px;
+	height:57px;
+	text-indent:-999em
+}
+.radio-btn a span {
+	display:none
+}
+.radio-btn p {
+	float:right;
+	margin-right:8px;
+	display:inline
+}
+.radio-btn p.love a {
+	background-position:0 -5px
+}
+.radio-btn p.love a:hover {
+	opacity:1
+}
+.radio-btn p.love_add a {
+	background-position:0 -123px
+}
+.radio-btn p.play a {
+	background-position:0 0
+}
+.radio-btn p.play a:hover {
+	background-position:0 -57px
+}
+.radio-btn p.pause a {
+	background-position:-57px 0
+}
+.radio-btn p.pause a:hover {
+	background-position:-57px -57px
+}
+.radio-btn p.next a {
+	background-position:-114px 0;
+	position:relative
+}
+.radio-btn p.next a:hover {
+	background-position:-114px -57px
+}
+.bgstretcher-page {
+	text-align:center
+}
+.page-wrapper {
+	float:left;
+	width:740px;
+	display:inline;
+	margin-left:30px
+}
+.bgstretcher-area {
+	text-align:left;
+}
+.bgstretcher,.bgstretcher ul,.bgstretcher ul li {
+	position:absolute;
+	top:0;
+	left:0;
+}
+.bgstretcher {
+	background:#CED9D3;
+	overflow:hidden;
+	width:100%;
+	position:fixed;
+	z-index:1;
+	_position:absolute;
+	top:0;
+	left:0;
+}

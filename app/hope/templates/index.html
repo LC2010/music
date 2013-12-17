@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>初见</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="初见 初遇网 妹纸 美女 校花"/>
+    <meta property="wb:webmaster" content="bfa312168408a5bc" />
+    <meta name="description" content="鼓励妹纸上传自己的青春靓照，欢迎男同学大胆赞美欣赏的她。初见与微博打通，可以交友并互粉哦"/>
+    <link href="/images/hope/favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <link href="/css/hope/common.css" rel="stylesheet" media="screen">
+        <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/hope/common.js"></script>
+</head>
+<body>
+    {=include file="hope/menu.html"=}
+<div class="wraper">
+    <div class="container" >
+        {=foreach from=$list item=item=}
+        <div class="item">
+                <div class="mask">
+                      <div class="avatar">
+                          <a href="http://weibo.com/{=$item.userinfo.uid=}" target="_blank">
+                              <img style="width:34px;height:34px;" src="{=$item.userinfo.profile_image_url=}">
+                          </a>
+                      </div>
+                      <div class="desc">
+                          <div class="detail">
+                              <a href="http://weibo.com/{=$item.userinfo.uid=}" target="_blank">{=$item.userinfo.screen_name=}</a>
+                          </div>
+                          <div class="detail">{=$item.timePass=}</div>
+                      </div>
+                      <div class="hearts"><a class="heart" href="javascript:;"></a></div>
+                      <div style="clear:both;"></div>
+                 </div>
+                 <a href="/item/{=$item.id=}.html"><img src="{=$item.face=}"></a>
+                 <ul class="entry_tabs">
+                       <li class="view-hearts">
+                            <a title="围观数" tabindex="-1" href="/item/{=$item.id=}.html">
+                                <span>{=$item.click=}</span><i>次围观</i>
+                            </a>
+                       </li>
+                       <li class="view-tags">
+                            <a title="喜欢" tabindex="-1" href="/item/{=$item.id=}.html">
+                                <span>{=$item.like=}</span><i>评论</i>
+                            </a>
+                       </li>
+                       <li class="view-share">
+                       <a title="分享" tabindex="-1" href="javascript:;" onclick="share('{=$item.id=}', '{=$item.image=}', '{=$item.userinfo.screen_name=}')"><i>分享</i></a>
+                       </li>
+                 </ul>
+        </div>
+        {=/foreach=}
+        <div id="main"></div>
+        <div style="clear:both;"></div>
+    </div>
+    <div class="back" id="add-more">加载更多</div>
+</div>
+{=include file="hope/foot.html"=}
+</body>
+</html>
+<script>
+    function share(id, picture, screen_name){
+        var source = 'http://mayhope.com/item/'+id+'.html';
+         window.open("http://service.weibo.com/share/share.php?url=" + source + "&appkey=1028039693&title=我分享了@" +
+        screen_name+" 的一张图片&pic="+picture+"&ralateUid=3020750081", "_blank", "width=615,height=505,resizable=no");
+    }
+    
+</script>
+
